@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 
 class ItemSale {
-  ItemSale(this.productId, this.saleId, this.qtt, this.prodCostValue,
-      this.prodSaleValue);
+  ItemSale(this.productId, this.saleId, this.qtt, this.prodCostAtTheTime,
+      this.prodSaleAtTheTime);
 
   // Atributos.
   int productId;
   int saleId;
   int qtt;
-  int prodCostValue; // Valor do produto no momento da compra.
-  int prodSaleValue;
+  int prodCostAtTheTime; // Valor de custo do produto no momento da compra.
+  int prodSaleAtTheTime;// Valor de venda do produto no momento da compra.
 
   // Construtor a partir de um map.
   ItemSale.fromMap({Map<String, dynamic> map}) {
     productId = map['productId'];
     saleId = map['saleId'];
     qtt = map['qtt'];
-    prodCostValue = map['prodCostValue'];
-    prodSaleValue = map['prodSaleValue'];
+    prodCostAtTheTime = map['prodCostAtTheTime'];
+    prodSaleAtTheTime = map['prodSaleAtTheTime'];
   }
 
   // Codifica este objeto em um map.
@@ -26,8 +26,8 @@ class ItemSale {
     data['productId'] = productId;
     data['saleId'] = saleId;
     data['qtt'] = qtt;
-    data['prodCostValue'] = prodCostValue;
-    data['prodSaleValue'] = prodSaleValue;
+    data['prodCostAtTheTime'] = prodCostAtTheTime;
+    data['prodSaleAtTheTime'] = prodSaleAtTheTime;
     return data;
   }
 
@@ -36,7 +36,7 @@ class ItemSale {
     productId = otherItemSale.productId;
     saleId = otherItemSale.saleId;
     qtt = otherItemSale.qtt;
-    prodCostValue = otherItemSale.prodCostValue;
-    prodSaleValue = otherItemSale.prodSaleValue;
+    prodCostAtTheTime = otherItemSale.prodCostAtTheTime;
+    prodSaleAtTheTime = otherItemSale.prodSaleAtTheTime;
   }
 }
