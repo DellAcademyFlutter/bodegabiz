@@ -4,7 +4,10 @@ App para simplificar o controle de estoque a gerência e fluxo de caixa de uma m
 
 Versão do Flutter: 1.22.5,
 Versão da SDK Dart: 1.22.5,
-Versão do Android Studio: 4.1.0
+Versão do Android SDK: 30.0.2,
+Versão do Android Studio: 4.1.0 (opcional).
+
+//TODO: Modelo Relacional.
 
 ## Getting Started
 

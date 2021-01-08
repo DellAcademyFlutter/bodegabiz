@@ -17,7 +17,7 @@ class Product {
 
   // Atributos.
   int id;
-  String name;
+  String name; // PRODUCT_ID
   int currStock;
   int minStock;
   double unitCost;

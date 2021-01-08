@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'crud_controller.dart';
+import 'submodules/crud_category/crud_category_module.dart';
 import 'submodules/crud_product/crud_product_module.dart';
 
 class CrudPage extends StatefulWidget {
@@ -20,7 +21,9 @@ class _CrudPageState extends ModularState<CrudPage, CrudController> {
           RouterOutlet(
             module: CrudProductModule(),
           ),
-          Container(),
+          RouterOutlet(
+            module: CrudCategoryModule(),
+          ),
         ],
       ),
       bottomNavigationBar: AnimatedBuilder(
