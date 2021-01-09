@@ -32,6 +32,18 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Remove [Product]s marcados por removido.
+  removeProductByCategory(int categoryId) async {
+    // Certifica-se de obter todos os produtos.
+    final productsAux = await productDao.getProducts();
+
+    for (var i = 0; i < productsAux.length; i++) {
+      if (productsAux[i].categoryId == categoryId) {
+        await removeProduct(productsAux[i]);
+      }
+    }
+  }
+
   /// Remove permanentemente um [Product].
   removePermanentlyProduct(Product product) async {
     await productDao.deleteProduct(product.id);

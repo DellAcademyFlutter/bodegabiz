@@ -55,6 +55,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             trailing: Icon(Icons.arrow_right_outlined),
             onTap: () {
               controller.changeIndex(newIndex: 0);
+              Modular.to.pop();
             },
           ),
           ListTile(
@@ -63,6 +64,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             trailing: Icon(Icons.arrow_right_outlined),
             onTap: () {
               controller.changeIndex(newIndex: 1);
+              Modular.to.pop();
             },
           ),
           ListTile(
@@ -74,6 +76,16 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             leading: Icon(Icons.bar_chart_outlined),
             title: Text("Estatísticas"),
             trailing: Icon(Icons.arrow_right_outlined),
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("Configurações"),
+            trailing: Icon(Icons.arrow_right_outlined),
+            onTap: () {
+              controller.changeIndex(newIndex: 2);
+              Modular.to.pop();
+            },
           ),
         ],
       ),

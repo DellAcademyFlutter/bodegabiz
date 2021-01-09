@@ -1,4 +1,4 @@
-import 'package:bodegabiz/app/modules/crud/submodules/crud_category/pages/add_category.dart';
+import 'package:bodegabiz/app/modules/crud/submodules/crud_category/pages/add_category_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'crud_category_controller.dart';

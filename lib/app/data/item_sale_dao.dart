@@ -28,7 +28,7 @@ class ItemSaleDao {
       DBHelper.TABLE_ITEM_SALE_NAME,
       itemSale.toMap(),
       where:
-          "'${DBHelper.ITEM_SALE_PRODUCTID}' = ? AND '${DBHelper.ITEM_SALE_SALEID}' = ?",
+          "${DBHelper.ITEM_SALE_PRODUCTID} = ? AND ${DBHelper.ITEM_SALE_SALEID} = ?",
       whereArgs: [itemSale.productId, itemSale.saleId],
     );
   }
@@ -41,7 +41,7 @@ class ItemSaleDao {
     await db.delete(
       DBHelper.TABLE_ITEM_SALE_NAME,
       where:
-          "'${DBHelper.ITEM_SALE_PRODUCTID}' = ? AND '${DBHelper.ITEM_SALE_SALEID}' = ?",
+          "${DBHelper.ITEM_SALE_PRODUCTID} = ? AND ${DBHelper.ITEM_SALE_SALEID} = ?",
       whereArgs: [productId, saleId],
     );
   }

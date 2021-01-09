@@ -33,7 +33,7 @@ class ProductDao {
     await db.update(
       DBHelper.TABLE_PRODUCT_NAME,
       product.toMap(),
-      where: "'${DBHelper.PRODUCT_ID}' = ?",
+      where: "${DBHelper.PRODUCT_ID} = ?",
       whereArgs: [product.id],
     );
   }
@@ -44,7 +44,7 @@ class ProductDao {
 
     await db.delete(
       DBHelper.TABLE_PRODUCT_NAME,
-      where: "'${DBHelper.PRODUCT_ID}' = ?",
+      where: "${DBHelper.PRODUCT_ID} = ?",
       whereArgs: [id],
     );
   }

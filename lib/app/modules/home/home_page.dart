@@ -1,4 +1,5 @@
 import 'package:bodegabiz/app/modules/crud/crud_module.dart';
+import 'package:bodegabiz/app/modules/settings/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: controller.isInHomePage ? AppBar() : null,
       drawer: SideMenuWidget(),
       body: Consumer<HomeController>(builder: (context, value) {
         return IndexedStack(
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(" Welcome"),
             ),
             RouterOutlet(module: CrudModule()),
+            SettingsPage(),
           ],
         );
       }),

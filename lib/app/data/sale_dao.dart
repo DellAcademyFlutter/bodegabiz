@@ -33,7 +33,7 @@ class SaleDao {
     await db.update(
       DBHelper.TABLE_SALE_NAME,
       sale.toMap(),
-      where: "'${DBHelper.SALE_ID}' = ?",
+      where: "${DBHelper.SALE_ID} = ?",
       whereArgs: [sale.id],
     );
   }
@@ -44,7 +44,7 @@ class SaleDao {
 
     await db.delete(
       DBHelper.TABLE_SALE_NAME,
-      where: "'${DBHelper.SALE_ID}' = ?",
+      where: "${DBHelper.SALE_ID} = ?",
       whereArgs: [id],
     );
   }

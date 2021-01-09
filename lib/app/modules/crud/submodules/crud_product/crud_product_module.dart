@@ -1,3 +1,4 @@
+import 'package:bodegabiz/app/modules/crud/submodules/crud_product/pages/add_product_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'crud_product_controller.dart';
@@ -16,6 +17,11 @@ class CrudProductModule extends ChildModule {
         ModularRouter<String>(
           Modular.initialRoute,
           child: (_, args) => CrudProductPage(),
+          transition: TransitionType.leftToRight,
+        ),
+        ModularRouter<String>(
+          AddProductPage.routeName,
+          child: (_, args) => AddProductPage(product: args.data.product,),
           transition: TransitionType.leftToRight,
         ),
       ];

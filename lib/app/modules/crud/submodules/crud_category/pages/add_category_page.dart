@@ -1,7 +1,9 @@
 import 'package:bodegabiz/app/modules/crud/submodules/crud_category/crud_category_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+/// Classe View.
 class AddCategoryPage extends StatefulWidget {
   static const routeName = '/AddCategory';
 
@@ -11,13 +13,10 @@ class AddCategoryPage extends StatefulWidget {
 
 class _AddCategoryPageState
     extends ModularState<AddCategoryPage, CrudCategoryController> {
-  TextEditingController nameController = TextEditingController();
-  String name;
-
   @override
-  void dispose() {
-    super.dispose();
-    nameController.dispose();
+  void initState() {
+    super.initState();
+    controller.initializeName();
   }
 
   @override
@@ -31,10 +30,9 @@ class _AddCategoryPageState
               Container(
                 child: ListTile(
                   title: TextFormField(
-                    controller: nameController,
+                    controller: controller.nameController,
                     maxLines: null, // Necessario para entrada multilinha
                     keyboardType: TextInputType.multiline,
-                    onChanged: (valor) => setState(() => name = valor),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Insira o nome da categoria',
@@ -42,7 +40,11 @@ class _AddCategoryPageState
                   ),
                   trailing: IconButton(
                     icon: Icon(Icons.save),
-                    onPressed: null, //TODO,
+                    onPressed: () {
+                      controller.saveCategory(
+                          name: controller.nameController.text);
+                      Navigator.of(context).pop();
+                    },
                   ),
                 ),
               )

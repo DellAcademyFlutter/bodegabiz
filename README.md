@@ -9,6 +9,11 @@ Versão do Android Studio: 4.1.0 (opcional).
 
 //TODO: Modelo Relacional.
 
+## Gerências de Estado utilizadas
+1. SetState,
+2. ChangeNotifier,
+3. ValueNotifier,
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

@@ -33,7 +33,7 @@ class CategoryDao {
     await db.update(
       DBHelper.TABLE_CATEGORY_NAME,
       category.toMap(),
-      where: "'${DBHelper.CATEGORY_ID}' = ?",
+      where: "${DBHelper.CATEGORY_ID} = ?",
       whereArgs: [category.id],
     );
   }
@@ -44,7 +44,7 @@ class CategoryDao {
 
     await db.delete(
       DBHelper.TABLE_CATEGORY_NAME,
-      where: "'${DBHelper.CATEGORY_ID}' = ?",
+      where: "${DBHelper.CATEGORY_ID} = ?",
       whereArgs: [id],
     );
   }

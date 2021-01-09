@@ -1,3 +1,4 @@
+import 'package:bodegabiz/app/controllers/product_controller.dart';
 import 'package:bodegabiz/app/data/category_dao.dart';
 import 'package:bodegabiz/app/models/category.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class CategoryController extends ChangeNotifier {
   List<Category> categories = [];
   final categoryDao = Modular.get<CategoryDao>();
+  final productController = Modular.get<ProductController>();
 
   /// Adiciona um [Category].
   addCategory(Category category) async {
@@ -27,8 +29,9 @@ class CategoryController extends ChangeNotifier {
   }
 
   /// Remove um [Category].
-  removePermanentlyCategory(Category category) async {
+  removeCategory(Category category) async {
     await categoryDao.deleteCategory(category.id);
+    productController.removeProductByCategory(category.id);
     categories.remove(category);
 
     notifyListeners();
@@ -42,5 +45,12 @@ class CategoryController extends ChangeNotifier {
       }
     }
     return -1;
+  }
+
+  /// Inicializa com todos [Category]s.
+  initializeCategories() async {
+    await categoryDao.getCategories().then((value) => categories = value);
+
+    notifyListeners();
   }
 }
