@@ -31,8 +31,7 @@ class _AddCategoryPageState
                 child: ListTile(
                   title: TextFormField(
                     controller: controller.nameController,
-                    maxLines: null, // Necessario para entrada multilinha
-                    keyboardType: TextInputType.multiline,
+                    maxLength: 12,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Insira o nome da categoria',

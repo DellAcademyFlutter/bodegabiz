@@ -31,7 +31,7 @@ class CategoryController extends ChangeNotifier {
   /// Remove um [Category].
   removeCategory(Category category) async {
     await categoryDao.deleteCategory(category.id);
-    productController.removeProductByCategory(category.id);
+    await productController.removeProductCategory(category.id);
     categories.remove(category);
 
     notifyListeners();
@@ -45,6 +45,16 @@ class CategoryController extends ChangeNotifier {
       }
     }
     return -1;
+  }
+
+  /// Retorna um [Category] dado seu [id].
+  getCategoryById(int id) {
+    for (var i = 0; i < categories.length; i++) {
+      if (categories[i].id == id) {
+        return categories[i];
+      }
+    }
+    return null;
   }
 
   /// Inicializa com todos [Category]s.

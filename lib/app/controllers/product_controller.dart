@@ -1,5 +1,6 @@
 import 'package:bodegabiz/app/data/product_dao.dart';
 import 'package:bodegabiz/app/models/product.dart';
+import 'package:bodegabiz/app/shared/utils/math_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -33,13 +34,15 @@ class ProductController extends ChangeNotifier {
   }
 
   /// Remove [Product]s marcados por removido.
-  removeProductByCategory(int categoryId) async {
+  removeProductCategory(int categoryId) async {
     // Certifica-se de obter todos os produtos.
-    final productsAux = await productDao.getProducts();
+    List<Product> productsAux;
+    await productDao.getProducts().then((value) => productsAux = value);
 
     for (var i = 0; i < productsAux.length; i++) {
       if (productsAux[i].categoryId == categoryId) {
-        await removeProduct(productsAux[i]);
+        productsAux[i].categoryId = -1;
+        await updateProduct(productsAux[i]);
       }
     }
   }
@@ -50,6 +53,40 @@ class ProductController extends ChangeNotifier {
     products.remove(product);
 
     notifyListeners();
+  }
+
+  /// Inicializa com todos [Product]s.
+  initializeProducts() async {
+    await productDao.getProducts().then((value) => products = value);
+
+    notifyListeners();
+  }
+
+  /// Incrementa a quantidade de um [Product].
+  increment(Product product) async {
+    product.currStock++;
+    await updateProduct(product);
+  }
+
+  /// Decrementa a quantidade de um [Product].
+  decrement(Product product) async {
+    if (product.currStock > 0) {
+      product.currStock--;
+      await updateProduct(product);
+    }
+  }
+
+  /// Retorna o valor do lucro de um produto.
+  getProductProfit(Product product) {
+    return MathUtils.round(
+        number: product.unitSale - product.unitCost, decimalPlaces: 2);
+  }
+
+  /// Retorna o percentual do lucro de um produto.
+  getProductProfitPercent(Product product) {
+    return MathUtils.round(
+        number: (getProductProfit(product) * 100) / product.unitCost,
+        decimalPlaces: 2);
   }
 
   /// Retorna o index de um [Product] dado seu [id].

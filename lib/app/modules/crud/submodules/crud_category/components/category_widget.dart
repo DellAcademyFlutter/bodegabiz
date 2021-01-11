@@ -13,71 +13,63 @@ class CategoryWidget extends StatefulWidget {
 class _CategoryWidgetState extends State<CategoryWidget> {
   final categoryController = Modular.get<CategoryController>();
 
-  TextEditingController nameController = TextEditingController();
-  String name;
-  bool isEditing;
+  final _nameController = TextEditingController();
+  bool _isEditing;
 
   @override
   void initState() {
     super.initState();
-    nameController.text = categoryController.categories[widget.index].name;
-    name = nameController.text;
-    isEditing = false;
+    _nameController.text = categoryController.categories[widget.index].name;
+    _isEditing = false;
   }
 
   @override
   void dispose() {
     super.dispose();
-    nameController.dispose();
+    _nameController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Consumer<CategoryController>(
-        builder: (context, value) {
-          nameController.text =
-              categoryController.categories[widget.index].name;
-          name = nameController.text;
+    return Consumer<CategoryController>(
+      builder: (context, value) {
+        _nameController.text = categoryController.categories[widget.index].name;
 
-          return ListTile(
-            leading: Icon(Icons.label),
-            title: TextFormField(
-              controller: nameController,
-              readOnly: !isEditing,
-              onChanged: (value) => name = value,
-            ),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                    icon: Icon(isEditing ? Icons.save : Icons.edit),
-                    onPressed: () => setState(() => _changeMode())),
-                IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () => _deleteCategory()),
-              ],
-            ),
-          );
-        },
-      ),
+        return ListTile(
+          leading: Icon(Icons.label),
+          title: TextFormField(
+            controller: _nameController,
+            readOnly: !_isEditing,
+          ),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                  icon: Icon(_isEditing ? Icons.save : Icons.edit),
+                  onPressed: () => setState(() => _changeMode())),
+              IconButton(
+                  icon: Icon(Icons.delete), onPressed: () => _deleteCategory()),
+            ],
+          ),
+        );
+      },
     );
   }
 
   /// Alterna para o modo edicao.
   _changeMode() {
-    if (isEditing) {
+    if (_isEditing) {
       final editedCategory = categoryController.categories[widget.index];
-      editedCategory.name = name;
+      editedCategory.name = _nameController.text;
       categoryController.updateCategory(editedCategory);
     }
-    isEditing = !isEditing;
+    _isEditing = !_isEditing;
   }
 
   /// Deleta [Category].
   _deleteCategory() {
     categoryController
         .removeCategory(categoryController.categories[widget.index]);
-    nameController.text = categoryController.categories[widget.index].name;
+    _nameController.text = categoryController.categories[widget.index].name;
   }
 }

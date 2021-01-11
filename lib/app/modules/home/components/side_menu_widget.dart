@@ -40,12 +40,18 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             ),
           ),
           Divider(),
-          Center(
-            child: Column(
-              children: [
-                IconButton(icon: Icon(Icons.monetization_on), onPressed: null),
-                Text("Vender"),
-              ],
+          GestureDetector(
+            onTap: () {
+              controller.changeIndex(newIndex: 0);
+              Modular.to.pop();
+            },
+            child: Card(
+              child: Column(
+                children: [
+                  Icon(Icons.monetization_on),
+                  Text("Vender"),
+                ],
+              ),
             ),
           ),
           Divider(),
@@ -54,7 +60,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             title: Text("Página inicial"),
             trailing: Icon(Icons.arrow_right_outlined),
             onTap: () {
-              controller.changeIndex(newIndex: 0);
+              controller.changeIndex(newIndex: 1);
               Modular.to.pop();
             },
           ),
@@ -63,7 +69,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             title: Text("Cadastro"),
             trailing: Icon(Icons.arrow_right_outlined),
             onTap: () {
-              controller.changeIndex(newIndex: 1);
+              controller.changeIndex(newIndex: 2);
               Modular.to.pop();
             },
           ),
@@ -83,7 +89,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
             title: Text("Configurações"),
             trailing: Icon(Icons.arrow_right_outlined),
             onTap: () {
-              controller.changeIndex(newIndex: 2);
+              controller.changeIndex(newIndex: 3);
               Modular.to.pop();
             },
           ),

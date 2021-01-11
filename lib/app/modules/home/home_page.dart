@@ -1,4 +1,8 @@
+import 'package:bodegabiz/app/controllers/category_controller.dart';
+import 'package:bodegabiz/app/controllers/product_controller.dart';
 import 'package:bodegabiz/app/modules/crud/crud_module.dart';
+import 'package:bodegabiz/app/modules/home/pages/initial_page.dart';
+import 'package:bodegabiz/app/modules/sale/sale_module.dart';
 import 'package:bodegabiz/app/modules/settings/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +19,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = Modular.get<HomeController>();
+  final productController = Modular.get<ProductController>();
+  final categoryController = Modular.get<CategoryController>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    productController.initializeProducts();
+    categoryController.initializeCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +39,8 @@ class _HomePageState extends State<HomePage> {
         return IndexedStack(
           index: controller.index,
           children: [
-            Center(
-              child: Text(" Welcome"),
-            ),
+            RouterOutlet(module: SaleModule()),
+            InitialPage(),
             RouterOutlet(module: CrudModule()),
             SettingsPage(),
           ],

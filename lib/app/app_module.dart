@@ -13,8 +13,10 @@ import 'data/item_sale_dao.dart';
 import 'data/product_dao.dart';
 import 'data/sale_dao.dart';
 import 'modules/crud/crud_module.dart';
+import 'modules/crud/submodules/crud_category/crud_category_module.dart';
 import 'modules/crud/submodules/crud_product/crud_product_module.dart';
 import 'modules/home/home_module.dart';
+import 'modules/sale/sale_module.dart';
 import 'modules/settings/settings_module.dart';
 
 class AppModule extends MainModule {
@@ -45,7 +47,10 @@ class AppModule extends MainModule {
   List<ModularRouter> get routers => [
         ModularRouter(HomeModule.routeName, module: HomeModule()),
         ModularRouter(CrudModule.routeName, module: CrudModule()),
+        ModularRouter(CrudCategoryModule.routeName,
+            module: CrudCategoryModule()),
         ModularRouter(CrudProductModule.routeName, module: CrudProductModule()),
+        ModularRouter(SaleModule.routeName, module: SaleModule()),
         ModularRouter(SettingsModule.routeName, module: SettingsModule()),
       ];
 }
