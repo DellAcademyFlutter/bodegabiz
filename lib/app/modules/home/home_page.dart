@@ -2,7 +2,7 @@ import 'package:bodegabiz/app/controllers/category_controller.dart';
 import 'package:bodegabiz/app/controllers/product_controller.dart';
 import 'package:bodegabiz/app/modules/crud/crud_module.dart';
 import 'package:bodegabiz/app/modules/home/pages/initial_page.dart';
-import 'package:bodegabiz/app/modules/sale/sale_module.dart';
+import 'package:bodegabiz/app/modules/sell/sell_module.dart';
 import 'package:bodegabiz/app/modules/settings/settings_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         return IndexedStack(
           index: controller.index,
           children: [
-            RouterOutlet(module: SaleModule()),
+            RouterOutlet(module: SellModule()),
             InitialPage(),
             RouterOutlet(module: CrudModule()),
             SettingsPage(),

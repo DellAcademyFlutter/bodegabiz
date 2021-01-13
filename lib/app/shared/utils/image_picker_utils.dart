@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,12 +20,12 @@ class ImagePickerUtils {
   }
 
   /// Retorna uma imagem dada em base 64 em formato bytes
-  static getBytesImage({String base64Image}) {
+  static Uint8List getBytesImage({String base64Image}) {
     return base64Decode(base64Image);
   }
 
   /// Retorna uma [MemoryImage] dado uma imagem em base 64.
-  static getMemoryImage({String base64Image}) {
+  static getMemoryImageProvider({String base64Image}) {
     return MemoryImage(base64Decode(base64Image));
   }
 }

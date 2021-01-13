@@ -31,28 +31,24 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CategoryController>(
-      builder: (context, value) {
-        _nameController.text = categoryController.categories[widget.index].name;
+    _nameController.text = categoryController.categories[widget.index].name;
 
-        return ListTile(
-          leading: Icon(Icons.label),
-          title: TextFormField(
-            controller: _nameController,
-            readOnly: !_isEditing,
-          ),
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                  icon: Icon(_isEditing ? Icons.save : Icons.edit),
-                  onPressed: () => setState(() => _changeMode())),
-              IconButton(
-                  icon: Icon(Icons.delete), onPressed: () => _deleteCategory()),
-            ],
-          ),
-        );
-      },
+    return ListTile(
+      leading: Icon(Icons.label),
+      title: TextFormField(
+        controller: _nameController,
+        readOnly: !_isEditing,
+      ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+              icon: Icon(_isEditing ? Icons.save : Icons.edit),
+              onPressed: () => setState(() => _changeMode())),
+          IconButton(
+              icon: Icon(Icons.delete), onPressed: () => _deleteCategory()),
+        ],
+      ),
     );
   }
 

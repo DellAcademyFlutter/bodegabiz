@@ -16,7 +16,7 @@ import 'modules/crud/crud_module.dart';
 import 'modules/crud/submodules/crud_category/crud_category_module.dart';
 import 'modules/crud/submodules/crud_product/crud_product_module.dart';
 import 'modules/home/home_module.dart';
-import 'modules/sale/sale_module.dart';
+import 'modules/sell/sell_module.dart';
 import 'modules/settings/settings_module.dart';
 
 class AppModule extends MainModule {
@@ -50,7 +50,7 @@ class AppModule extends MainModule {
         ModularRouter(CrudCategoryModule.routeName,
             module: CrudCategoryModule()),
         ModularRouter(CrudProductModule.routeName, module: CrudProductModule()),
-        ModularRouter(SaleModule.routeName, module: SaleModule()),
+        ModularRouter(SellModule.routeName, module: SellModule()),
         ModularRouter(SettingsModule.routeName, module: SettingsModule()),
       ];
 }

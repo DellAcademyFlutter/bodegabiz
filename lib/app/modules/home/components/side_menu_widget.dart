@@ -46,6 +46,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
               Modular.to.pop();
             },
             child: Card(
+              color: Colors.green,
               child: Column(
                 children: [
                   Icon(Icons.monetization_on),

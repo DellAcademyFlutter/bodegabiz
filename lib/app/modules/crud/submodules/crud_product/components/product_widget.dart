@@ -79,7 +79,7 @@ class getImageAvatar extends StatelessWidget {
     return CircleAvatar(
       radius: MediaQuery.of(context).size.width * 0.15,
       backgroundImage: productController.products[index].image != ''
-          ? ImagePickerUtils.getMemoryImage(
+          ? ImagePickerUtils.getMemoryImageProvider(
               base64Image: productController.products[index].image)
           : null,
       backgroundColor: productController.products[index].image != ''
